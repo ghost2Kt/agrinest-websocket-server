@@ -79,7 +79,8 @@ io.use((socket, next) => {
 io.on('connection', socket => {
   const room = `user:${socket.userId}`;
   socket.join(room);
-  console.log(`[socket] connected ${room}`);
+  socket.join('catalog');
+  console.log(`[socket] connected ${room} + catalog`);
   socket.on('disconnect', reason => {
     console.log(`[socket] disconnected ${room} (${reason})`);
   });
